@@ -22,12 +22,20 @@ public class LionTest {
         assertEquals(1, new Lion("Самец").getKittens());
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"Самец", "Самка"})
-    public void doesHaveMane(String arg) throws Exception {
-        if ("Самец".equals(arg)) {
-            assertTrue(new Lion(arg).doesHaveMane());
-        } else assertFalse(new Lion(arg).doesHaveMane());
+    @Test
+    public void doesHaveManeMale() throws Exception {
+        Lion lion = new Lion("Самец");
+        boolean actual = lion.doesHaveMane();
+        boolean expected = true;
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void doesHaveManeFemale() throws Exception {
+        Lion lion = new Lion("Самка");
+        boolean actual = lion.doesHaveMane();
+        boolean expected = false;
+        assertEquals(expected,actual);
     }
 
     @Test(expected = Exception.class)
